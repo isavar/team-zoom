@@ -17,3 +17,10 @@ http://www.flickr.com/photos/63463201@N00/8542199616/sizes/l/
 #### genutzte Modernizr Tests:
 csstransitions
 pointerevents (unserer)
+
+#### mögliche Erweiterungen:
+* (klickbare) Minimap in der Zoomansicht 
+* Umschalter für Wechsel der Zoomansicht zwischen Höhen- und Breiteneinpassung (contain)
+* Mega Lupen-Zoom
+* Mehrere Thumbnails
+* Bei mehreren Bildern: auch in der Zoomansicht durchpagebar
