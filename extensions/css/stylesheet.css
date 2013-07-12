@@ -1,0 +1,153 @@
+/* Avoid adding project specific values in this file
+   Add your values to _vars.less
+   
+   Please add new generic helpers also to the Boilerplate Git project
+   See README.md for more infos.
+*/
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 11px;
+  line-height: 16px;
+  font-family: Arial, Verdana, sans-serif;
+  background: #ffffff;
+  overflow-y: scroll;
+}
+* + html body {
+  overflow-y: auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+a:hover {
+  color: #333333;
+}
+p {
+  margin: 0 0 18px 0;
+  padding: 0;
+}
+p a {
+  text-decoration: underline;
+}
+p a:hover {
+  text-decoration: none;
+}
+img {
+  display: block;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+#nav {
+  float: left;
+  width: 150px;
+  vertical-align: top;
+  margin-right: 30px;
+}
+body #pdi {
+  float: left;
+  width: 240px;
+  position: relative;
+  border: 20px solid #e1e1e1;
+  display: inline-block;
+}
+body #pdi img {
+  cursor: pointer;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: -o-zoom-in;
+  cursor: zoom-in;
+}
+body #pdi .zoomicon {
+  color: #ffffff;
+  font-size: 22px;
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: -ms-zoom-in;
+  cursor: -o-zoom-in;
+  cursor: zoom-in;
+}
+body.progress:after {
+  position: fixed;
+  z-index: 2;
+  top: 35%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  margin: -35px 0 0 -35px;
+  content: "";
+  opacity: 0.7;
+  background: #000000 url("../../images/el_loader.gif") no-repeat 50% 50%;
+  border-radius: 15px;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
+}
+body.zoomed #zoom {
+  display: block;
+}
+body #zoom {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100%;
+  z-index: 1;
+  cursor: pointer;
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: -ms-zoom-out;
+  cursor: -o-zoom-out;
+  cursor: zoom-in;
+  -webkit-transition: opacity 0.75s ease-in-out;
+  -moz-transition: opacity 0.75s ease-in-out;
+  -o-transition: opacity 0.75s ease-in-out;
+  transition: opacity 0.75s ease-in-out;
+  -webkit-transform: translateZ(0);
+}
+.pointerevents body #zoom {
+  opacity: 0;
+  pointer-events: none;
+}
+body #zoom > img {
+  width: 100%;
+  height: auto;
+}
+body #zoom > .close {
+  position: absolute;
+  color: #ffffff;
+  top: 20px;
+  right: 30px;
+  font-size: 42px;
+  line-height: 1;
+  font-weight: bold;
+  cursor: pointer;
+  cursor: -webkit-zoom-out;
+  cursor: -moz-zoom-out;
+  cursor: -ms-zoom-out;
+  cursor: -o-zoom-out;
+  cursor: zoom-in;
+}
+body #zoom.show {
+  display: block;
+}
+.pointerevents body #zoom.show {
+  opacity: 1;
+  pointer-events: auto;
+}

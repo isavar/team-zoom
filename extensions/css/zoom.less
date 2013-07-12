@@ -1,0 +1,92 @@
+body {
+	#pdi {
+		float:left;
+		width: 240px;
+		position: relative;
+		border: 20px solid @boilerplate-grey;
+		display: inline-block;
+		img {
+			cursor: pointer;
+			#boilerplate-cursors > .zoom-in;
+		}
+		.zoomicon {
+			color: @boilerplate-white;
+			font-size: 22px;
+			display: block;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+			cursor: pointer;
+			#boilerplate-cursors > .zoom-in;
+		}
+	}
+
+	&.progress {
+		&:after{
+			@width: 70px;
+			position: fixed;
+			z-index: 2;
+			top: 35%;
+			left: 50%;
+			width: @width;
+			height: @width;
+			margin: @width / -2 0 0  @width / -2;
+			content: "";
+			opacity: 0.7;
+			background: @boilerplate-black url("../../images/el_loader.gif") no-repeat 50% 50%;
+			#boilerplate-border-radius > .generic(15px);
+			#boilerplate-transition > .fade;
+		}
+	}
+	&.zoomed {
+		#container {
+			//position: relative;
+		}
+		#zoom {
+			display: block;
+		}
+	}
+	#zoom{
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		min-height: 100%;
+		z-index: 1;
+		cursor: pointer;
+		#boilerplate-cursors > .zoom-out;
+		#boilerplate-transition > .generic(.75s, opacity, ease-in-out);
+		#boilerplate-tools > .enableGPU;
+
+		.pointerevents & {
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		> img{
+			width: 100%;
+			height: auto;
+		}
+
+		> .close{
+			position: absolute;
+			color: @boilerplate-white;
+			top: 20px;
+			right: 30px;
+			font-size: 42px;
+			line-height: 1;
+			font-weight: bold;
+			cursor: pointer;
+			#boilerplate-cursors > .zoom-out;
+		}
+		
+		&.show{
+			display: block;
+			.pointerevents & {
+				opacity: 1;
+				pointer-events: auto;
+			}
+		}
+	}
+}

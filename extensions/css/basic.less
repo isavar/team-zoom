@@ -1,0 +1,52 @@
+html {
+	//font-size: 100%; //corrects text resizing oddly in IE7 when body font-size is set using em units
+	-webkit-text-size-adjust: 100%; //prevents iOS text size adjust on orientation change w/o disabling user zoom
+	-ms-text-size-adjust: 100%;
+}
+
+body{
+	margin:0;
+	padding:0;
+	font-size:@boilerplate-base-fontsize;
+	line-height:@boilerplate-base-lineheight;
+	#boilerplate-font > .base;
+	background:@boilerplate-white;
+	//text-rendering:optimizeLegibility; // may cause render issues
+	overflow-y: scroll;
+	*+html & {
+		overflow-y: auto; //fix IE7 double scrollbar
+	}
+}
+a{
+	text-decoration: none;
+	color: inherit;
+	#boilerplate-transition > .generic();
+	&:hover{
+		color: @boilerplate-black-hover;
+	}
+}
+p{
+	margin:0 0 @boilerplate-paragraph-margin 0;
+	padding:0;
+	a{
+		text-decoration:underline;
+		&:hover{
+		  text-decoration: none;
+		}
+	}
+}
+
+img{
+	display: block;
+	border:0;
+	-ms-interpolation-mode: bicubic;
+}
+
+#nav {
+	float:left;
+	width: 150px;
+	vertical-align: top;
+	margin-right: 30px;
+}
+
+

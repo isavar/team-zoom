@@ -1,0 +1,737 @@
+/* Avoid adding project specific values in this file
+   Add your values to _vars.less
+   
+   Please add new generic helpers also to the Boilerplate Git project
+   See README.md for more infos.
+*/
+
+
+// box ------------------------------------------------------------------------
+// http://caniuse.com/#feat=css3-boxsizing
+// https://developer.mozilla.org/de/docs/CSS/box-sizing
+
+.boilerplate-box(@val){
+  //-webkit-box-sizing:@val; // iOS < 5
+  -moz-box-sizing:@val;
+  //-ms-box-sizing:@val;
+  //-o-box-sizing:@val;
+  box-sizing:@val;
+}
+
+#boilerplate-box{
+  .border(){
+    .boilerplate-box(border-box);
+  }
+  .content(){
+    .boilerplate-box(content-box);
+  }
+}
+
+// Multi-Column ---------------------------------------------------------------
+// https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_multi-column_layouts
+// http://caniuse.com/#feat=multicolumn
+
+.boilerplate-column-count(@val){
+    -webkit-column-count: @val;
+    -moz-column-count: @val;
+    column-count: @val;
+}
+.boilerplate-column-gap(@val){
+    -webkit-column-gap: @val;
+    -moz-column-gap: @val;
+    column-gap: @val;
+}
+
+#boilerplate-column{
+    .count(@val){
+        .boilerplate-column-count(@val);
+    }
+    .gap(@val){
+        .boilerplate-column-gap(@val);
+    }
+}
+
+// appearance -----------------------------------------------------------------
+// Non-standard: https://developer.mozilla.org/de/docs/CSS/-moz-appearance
+
+.boilerplate-appearance(@val:none){
+  -webkit-appearance: @val;
+  -moz-appearance: @val;
+  //-ms-appearance: @val;
+  //-o-appearance: @val;
+  //appearance: @val;
+}
+
+#boilerplate-appearance{
+  .none(){
+    .boilerplate-appearance();
+  }
+  .generic(@val){
+    .boilerplate-appearance(@val);
+  }
+  .textfield(){
+    .boilerplate-appearance(textfield);
+  }
+  
+  .no-search(){
+    /* Non-Standard http://css-tricks.com/webkit-html5-search-inputs/ */
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      #boilerplate-appearance > .none;
+    }
+    /* Non-Standard http://msdn.microsoft.com/en-us/library/windows/apps/hh465740.aspx */
+    &::-ms-clear {
+      #boilerplate-appearance > .none;
+    }
+  }
+}
+
+// shadow ---------------------------------------------------------------------
+// http://caniuse.com/#feat=css-boxshadow
+// https://developer.mozilla.org/de/docs/CSS/box-shadow */
+
+.boilerplate-shadow(@val:none){
+  //-webkit-box-shadow:@val; //S < 5.1, iOS < 5
+  //-moz-box-shadow:@val;    //FF < 4
+  //-ms-box-shadow:@val;
+  //-o-box-shadow:@val;
+  box-shadow:@val;
+}
+
+#boilerplate-shadow{
+  .none(){
+    .boilerplate-shadow();
+  }
+  .generic(@val){
+    .boilerplate-shadow(@val);
+  }
+}
+
+// border-radius --------------------------------------------------------------
+// http://caniuse.com/#feat=border-radius
+// https://developer.mozilla.org/de/docs/CSS/border-radius
+// https://developer.mozilla.org/de/docs/CSS/border-top-left-radius
+
+.boilerplate-border-radius(@val:0) {
+  //-webkit-border-radius:@val; //iOS < 4, A < 2.2
+  //-moz-border-radius:@val;    // FF < 4
+  //-ms-border-radius:@val;
+  //-o-border-radius:@val;
+  border-radius:@val;
+}
+.boilerplate-border-top-left-radius(@val:0){
+  //-webkit-border-top-left-radius:@val; //S < 5
+  //-moz-border-top-left-radius:@val;    // FF < 4
+  //-ms-border-top-left-radius:@val;
+  //-o-border-top-left-radius:@val;
+  border-top-left-radius:@val;
+}
+.boilerplate-border-top-right-radius(@val:0){
+  //-webkit-border-top-right-radius:@val; //S < 5
+  //-moz-border-top-right-radius:@val;    // FF < 4
+  //-ms-border-top-right-radius:@val;
+  //-o-border-top-right-radius:@val;
+  border-top-right-radius:@val;
+}
+.boilerplate-border-bottom-left-radius(@val:0){
+  //-webkit-border-bottom-left-radius:@val; //S < 5
+  //-moz-border-bottom-left-radius:@val;    // FF < 4
+  //-ms-border-bottom-left-radius:@val;
+  //-o-border-bottom-left-radius:@val;
+  border-bottom-left-radius:@val;
+}
+.boilerplate-border-bottom-right-radius(@val:0){
+  //-webkit-border-bottom-right-radius:@val; //S < 5
+  //-moz-border-bottom-right-radius:@val;    // FF < 4
+  //-ms-border-bottom-right-radius:@val;
+  //-o-border-bottom-right-radius:@val;
+  border-bottom-right-radius:@val;
+}
+
+#boilerplate-border-radius {
+  .none(){
+    .boilerplate-border-radius();
+  }
+  .generic(@val){
+    .boilerplate-border-radius(@val);
+  }
+  .top(@val){
+    .boilerplate-border-top-left-radius(@val);
+    .boilerplate-border-top-right-radius(@val);
+    .left(@val){
+        .boilerplate-border-top-left-radius(@val);
+    }
+    .right(@val){
+        .boilerplate-border-top-right-radius(@val);
+    }
+  }
+  .bottom(@val){
+    .boilerplate-border-bottom-left-radius(@val);
+    .boilerplate-border-bottom-right-radius(@val);
+    .left(@val){
+        .boilerplate-border-bottom-left-radius(@val);
+    }
+    .right(@val){
+        .boilerplate-border-bottom-right-radius(@val);
+    }
+  }
+  .right(@val){
+    .boilerplate-border-top-right-radius(@val);
+    .boilerplate-border-bottom-right-radius(@val);
+  }
+  .left(@val){
+    .boilerplate-border-top-left-radius(@val);
+    .boilerplate-border-bottom-left-radius(@val);
+  }
+}
+
+// border-image --------------------------------------------------------------
+// http://caniuse.com/#feat=border-image
+// https://developer.mozilla.org/de/docs/CSS/border-image
+
+.boilerplate-border-image-linear-gradient(@val:none){
+    -webkit-border-image: ~`"-webkit-linear-gradient(" + "@{val}" + ") 1 100%"`; //S < 6, iOS < 6
+    //-moz-border-image: ~`"-moz-linear-gradient(" + "@{val}" + ") 1 100%"`;     //FF < 15
+    -ms-border-image: ~`"-ms-linear-gradient(" + "@{val}" + ") 1 100%"`;
+    -o-border-image: ~`"-o-linear-gradient(" + "@{val}" + ") 1 100%"`;
+    border-image: ~`"linear-gradient(" + "@{val}" + ") 1 100%"`;
+}
+
+#boilerplate-border-image{
+  .none(){
+      .boilerplate-border-image-linear-gradient();
+  }
+  .generic(@val){
+      .boilerplate-border-image-linear-gradient(@val);
+      /*left, rgba(229,229,229,.1), rgba(229,229,229,.5) 25%, rgba(229,229,229,1) 50%, rgba(229,229,229,.5) 75%, rgba(229,229,229,.1)*/
+  }
+}
+
+// gradient -------------------------------------------------------------------
+// http://caniuse.com/#feat=css-gradients
+// https://developer.mozilla.org/en-US/docs/CSS/linear-gradient
+// https://developer.mozilla.org/en-US/docs/CSS/radial-gradient
+
+.boilerplate-linear-gradient(@val:none) {
+  background:-webkit-linear-gradient(@val); //C < 26
+  background:-moz-linear-gradient(@val);    //FF < 15
+  //background:-ms-linear-gradient(@val);
+  //background:-o-linear-gradient(@val);
+}
+
+.boilerplate-gradient-radial(@val1,@val2) {
+  @style:~"center, ellipse cover, @{val1} 0%, @{val2} 95%";
+  background: mix(@val1,@val2,50%);
+  background: -webkit-radial-gradient(@style);
+  background: -moz-radial-gradient(@style);
+  background: -o-radial-gradient(@style);
+  //background: -ms-radial-gradient(@style);
+  background: radial-gradient(@style);
+}
+
+#boilerplate-gradient {
+  .none(){
+    background: none;
+  }
+  .linear(@val1,@val2){
+    .top {
+        background: mix(@val1,@val2,50%);
+        .boilerplate-linear-gradient(~"top, @{val1}, @{val2}");
+        background:linear-gradient(to bottom, @val1, @val2); 
+    }
+    .bottom {
+        background: mix(@val2,@val1,50%);
+        .boilerplate-linear-gradient(~"bottom, @{val1}, @{val2}");
+        background:linear-gradient(to top, @val1, @val2); 
+    }
+  }
+  .radial(@val1,@val2){
+    .boilerplate-gradient-radial(@val1,@val2);
+  }
+}
+
+// filter ---------------------------------------------------------------------
+// http://caniuse.com/#feat=css-filters
+// https://developer.mozilla.org/en-US/docs/CSS/filter
+
+.boilerplate-filter(@val:none){
+    -webkit-filter: @val;
+    -moz-filter: @val;
+    -ms-filter: @val;
+    -o-filter: @val;
+    filter: @val;
+}
+
+#boilerplate-filter{
+  .none(){
+      .boilerplate-filter();
+  }
+  .generic(@val){
+      .boilerplate-filter(@val);
+  }
+}
+
+// backface -------------------------------------------------------------------
+// https://developer.mozilla.org/en-US/docs/CSS/backface-visibility
+
+.boilerplate-backface(@val:visble) {
+  -webkit-backface-visibility: @val; //C < 12
+  -moz-backface-visibility: @val;    //FF < 16
+  //-ms-backface-visibility: @val;
+  -o-backface-visibility: @val;
+  backface-visibility: @val;
+}
+
+#boilerplate-backface {
+  .visible(){
+    .boilerplate-backface();
+  }
+  .hidden(){
+    .boilerplate-backface(hidden);
+  }
+}
+
+
+// transform ------------------------------------------------------------------
+// http://caniuse.com/#feat=transforms2d
+// http://caniuse.com/#feat=transforms3d
+// https://developer.mozilla.org/en-US/docs/CSS/transform
+// For IE: http://msdn.microsoft.com/en-us/library/ms533014%28VS.85,loband%29.aspx
+
+.boilerplate-transform(@val:none) {
+  -webkit-transform: @val;
+  -moz-transform: @val; //FF < 16
+  -ms-transform: @val; //IE < 9
+  -o-transform: @val;
+  transform: @val;
+}
+
+.boilerplate-transform-origin(@val:50%){
+  -webkit-transform-origin: @val;
+  -moz-transform-origin: @val; //FF < 16
+  -ms-transform-origin: @val; //IE < 9
+  -o-transform-origin: @val;
+  transform-origin: @val;
+}
+
+.boilerplate-transform-style(@val:flat) {
+  -webkit-transform-style: @val;
+  -moz-transform-style: @val; //FF < 16
+  -o-transform-style: @val;
+  -ms-transform-style: @val;
+  transform-style: @val;
+}
+
+#boilerplate-transform {
+  .none(){
+    .boilerplate-transform();
+  }
+  .generic(@val){
+    .boilerplate-transform(@val);
+  }
+}
+
+#boilerplate-transform-origin{
+  .none(){
+    .boilerplate-transform-origin();
+  }
+  .generic(@val){
+    .boilerplate-transform-origin(@val);
+  }
+}
+
+#boilerplate-transform-style {
+  .none(){
+      .boilerplate-transform-style();
+  }
+  .preserve3d(){
+    .boilerplate-transform-style(preserve-3d);
+  }
+}
+
+// perspective ----------------------------------------------------------------
+// http://caniuse.com/#feat=transforms2d
+// http://caniuse.com/#feat=transforms3d
+// https://developer.mozilla.org/en-US/docs/CSS/perspective
+
+.boilerplate-perspective(@val:none){
+  -webkit-perspective: @val;
+  -moz-perspective: @val; //FF < 16
+  //-ms-perspective: @val;
+  -o-perspective: @val;
+  perspective: @val;
+}
+
+.boilerplate-perspective-origin(@val:50%){
+  -webkit-perspective-origin: @val;
+  -moz-perspective-origin: @val; //FF < 16
+  //-ms-perspective-origin: @val;
+  -o-perspective-origin: @val;
+  perspective-origin: @val;
+}
+
+#boilerplate-perspective{
+  .none(){
+    .boilerplate-perspective();
+  }
+  .generic(@val){
+    .boilerplate-perspective(@val);
+  }
+}
+
+#boilerplate-perspective-origin{
+  .none(){
+    .boilerplate-perspective-origin();
+  }
+  .generic(@val){
+    .boilerplate-perspective-origin(@val);
+  }
+}
+
+// transition -----------------------------------------------------------------
+// http://caniuse.com/#feat=css-transitions
+// https://developer.mozilla.org/en-US/docs/CSS/transition
+
+.boilerplate-transition(@val) {
+  -webkit-transition: @val; // C < 26
+  -moz-transition: @val;    // FF < 16
+  //-ms-transition: @val;
+  -o-transition: @val;      // O < 12.1
+  transition: @val;
+}
+
+#boilerplate-transition{
+  .none(){
+    .boilerplate-transition(none,"","");
+  }
+  .generic(@val1:@defaultTiming,@val2:all,@val3:@defaultEasing){
+    @style:@val2 @val1 @val3;
+    .boilerplate-transition(@style);
+  }
+  .fade(@val1:@defaultTiming, @val2:@defaultEasing){
+     @style: opacity @val1 @val2;
+    .boilerplate-transition(@style);
+  }
+  .colors(@val1:@defaultTiming, @val2:@defaultEasing){
+    @style:background-color @val1 @val2, color @val1 @val2, border-color @val1 @val2;
+    .boilerplate-transition(@style);
+  }
+}
+
+// animation ------------------------------------------------------------------
+// http://caniuse.com/#feat=css-animation
+// https://developer.mozilla.org/en-US/docs/CSS/animation
+
+.boilerplate-animation(@val:none) {
+  -webkit-animation: @val;
+  -moz-animation: @val; // FF < 16
+  //-ms-animation: @val;
+  -o-animation: @val; // O < 12.1
+  animation: @val;
+}
+
+#boilerplate-animation{
+  .none(){
+    .boilerplate-animation();
+  }
+  .generic(@val){
+    .boilerplate-animation(@val);
+  }
+}
+
+// reflection -----------------------------------------------------------------
+// Non-Standard http://caniuse.com/#feat=css-reflections
+
+.boilerplate-reflection(@val:none) {
+  -webkit-box-reflect: @val;
+  /*Non-Standard
+  -moz-box-reflect: @val;
+  -ms-box-reflect: @val;
+  -o-box-reflect: @val;
+  box-reflect: @val;*/
+}
+
+#boilerplate-reflection{
+  .none(){
+      .boilerplate-reflection();
+  }
+  .generic(@val){
+      .boilerplate-reflection(@val);
+  }
+}
+
+// touch ----------------------------------------------------------------------
+// Non-Standard http://caniuse.com/#feat=user-select-none
+// Non-Standard https://developer.mozilla.org/en-US/docs/CSS/user-select
+
+.boilerplate-touch(@val:all) {
+    -webkit-user-select: @val;
+    -moz-user-select: @val;
+    -ms-user-select: @val;
+    /*-o-user-select: @val;*/
+    user-select: @val;
+}
+
+#boilerplate-touch{
+   .none(){
+      .boilerplate-touch();
+   }
+   .generic(){
+      .boilerplate-touch(none);
+   }
+}
+
+// flexbox --------------------------------------------------------------------
+// http://caniuse.com/#feat=flexbox
+// https://developer.mozilla.org/en-US/docs/CSS/Tutorials/Using_CSS_flexible_boxes
+// Firefox < 22, Internet Explorer 10 and Safari support an old incompatible draft version of the specification. 
+// They have not been updated to support the final version.
+
+.boilerplate-flexbox-display(){
+  display: -webkit-flex;
+  display: -moz-flex;  // FF < 22
+  display: -ms-flex;
+  //display: -o-flex;
+  display: flex;
+}
+.boilerplate-flexbox-basis(@val:auto){
+  -webkit-flex-basis: @val;
+  -moz-flex-basis: @val;  // FF < 22
+  -ms-flex-basis: @val;
+  //-o-flex-basis: @val;
+  flex-basis: @val;
+}
+.boilerplate-flexbox-direction(@val:row){
+  -webkit-flex-direction: @val;
+  -moz-flex-direction: @val;  // FF < 22
+  -ms-flex-direction: @val;
+  //-o-flex-direction: @val;
+  flex-direction: @val;
+}
+.boilerplate-flexbox-wrap(@val:nowrap){
+  -webkit-flex-wrap: @val;
+  -moz-flex-wrap: @val;  // FF < 22
+  -ms-flex-wrap: @val;
+  //-o-flex-wrap: @val;
+  flex-wrap: @val;
+}
+.boilerplate-flexbox-flow(@val:~"row nowrap"){
+  -webkit-flex-flow: @val;
+  -moz-flex-flow: @val;  // FF < 22
+  -ms-flex-flow: @val;
+  //-o-flex-flow: @val;
+  flex-flow: @val;
+}
+.boilerplate-flexbox-grow(@val:0){
+  -webkit-flex-grow: @val;
+  -moz-flex-grow: @val;  // FF < 22
+  -ms-flex-grow: @val;
+  //-o-flex-grow: @val;
+  flex-grow: @val;
+}
+.boilerplate-flexbox-shrink(@val:1){
+  -webkit-flex-shrink: @val;
+  -moz-flex-shrink: @val;  // FF < 22
+  -ms-flex-shrink: @val;
+  //-o-flex-shrink: @val;
+  flex-shrink: @val;
+}
+
+#boilerplate-flexbox {
+  .display(){
+    .boilerplate-flexbox-display();
+  }
+  .basis{
+    .none(){
+      .boilerplate-flexbox-basis();
+    }
+    .generic(@val){
+      .boilerplate-flexbox-basis(@val);
+    }
+  }
+  .direction{
+    .none(){
+        .boilerplate-flexbox-direction();
+    }
+    .generic(@val){
+        .boilerplate-flexbox-direction(@val);
+    }
+  }
+  .wrap{
+    .none(){
+      .boilerplate-flexbox-wrap();
+    }
+    .generic(@val){
+      .boilerplate-flexbox-wrap(@val);
+    }
+  }
+  .flow{
+    .none(){
+      .boilerplate-flexbox-flow();
+    }
+    .generic(@val){
+      .boilerplate-flexbox-flow(@val);
+    }
+  }
+  .grow{
+    .none(){
+      .boilerplate-flexbox-grow();
+    }
+    .generic(@val){
+      .boilerplate-flexbox-grow(@val);
+    }
+  }
+  .shrink{
+    .none(){
+      .boilerplate-flexbox-shrink();
+    }
+    .generic(@val){
+      .boilerplate-flexbox-shrink(@val);
+    }
+  }
+}
+
+// cursors --------------------------------------------------------------------
+// https://developer.mozilla.org/en-US/docs/CSS/cursor
+
+.cursor-zoom(@val:in) {
+    cursor: ~`"-webkit-zoom-" + "@{val}"`;
+    cursor: ~`"-moz-zoom-" + "@{val}"`;
+    cursor: ~`"-ms-zoom-" + "@{val}"`;
+    cursor: ~`"-o-zoom-" + "@{val}"`;
+    cursor: zoom-in;
+}
+
+#boilerplate-cursors {
+    .zoom-in(){
+        .cursor-zoom()
+    }
+    .zoom-out(){
+        .cursor-zoom(out)
+    }
+}
+
+// font -----------------------------------------------------------------------
+// https://developer.mozilla.org/de/docs/CSS/font-family
+
+.boilerplate-font(@val) {
+  font-family:@val;
+}
+
+#boilerplate-font {
+  .base(){
+    .boilerplate-font(@boilerplate-base-font);
+  }
+  .highlight(){
+    .boilerplate-font(@boilerplate-highlight-font);
+  }
+  .generic(@val){
+    .boilerplate-font(@val);
+  }
+}
+
+
+// hyphenation ----------------------------------------------------------------
+// http://caniuse.com/#feat=css-hyphens 
+// https://developer.mozilla.org/de/docs/CSS/hyphens
+ 
+.boilerplate-hyphenation(@val:manual) {
+    -webkit-hyphens: @val;
+    -moz-hyphens: @val;
+    -ms-hyphens: @val;
+    -o-hyphens: @val;
+    hyphens: @val;
+}
+ 
+#boilerplate-hyphenation{
+    .none(){
+        .boilerplate-hyphenation();
+    }
+    .auto(){
+        .boilerplate-hyphenation(auto);
+    }
+}
+
+// placeholder color ----------------------------------------------------------
+// https://developer.mozilla.org/de/docs/CSS/:-moz-placeholder
+
+.boilerplate-placeholder(@val:light-grey) {
+  &::-webkit-input-placeholder {
+    color: @val;
+  }
+  &::-moz-placeholder {
+    color: @val;
+  }
+  &:-ms-placeholder {
+    color: @val;
+  }
+  &::-o-placeholder {
+    color: @val;
+  }
+  &::placeholder {
+    color: @val;
+  }
+}
+
+// tools ----------------------------------------------------------------------
+
+#boilerplate-tools{
+  .ir() {
+    font: 0/0 a; 
+    text-shadow: none; 
+    color: transparent;
+    /* image-replacement (http://nicolasgallagher.com/another-css-image-replacement-technique/) */
+  }
+  .ir2() {
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    /* image-replacement (http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/) */
+  }
+  
+  .bg(@val){ /* usage: #boilerplate-tools > .bg("/backgrounds/bg_img.png"); */
+    background: transparent url("@{boilerplate-image-path}@{val}") no-repeat 0 0;
+  }
+
+  .enableGPU(){
+    -webkit-transform: translateZ(0);
+  }
+  .enableGPU2(){
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .noGap(){
+    font-size: 0;
+    line-height: 0;
+  }
+  .reGap(@val1:@boilerplate-base-fontsize,@val2:@boilerplate-base-lineheight){
+    font-size: @val1;
+    line-height: @val2;
+  }
+  
+  .fontsize(@val1,@val2){
+    .reGap(@val1,@val2);
+  }
+  
+  .posabs(){
+    position: absolute;
+    top: @val;
+    right: @val;
+    bottom: @val;
+    left: @val;
+  }
+  .posabs(@val1, @val2){
+    position: absolute;
+    left: @val1;
+    top: @val2;
+  }
+  .posabs(@val1, @val2, @val3, @val4){
+    position: absolute;
+    top: @val1;
+    right: @val2;
+    bottom: @val3;
+    left: @val4;
+  }
+}
